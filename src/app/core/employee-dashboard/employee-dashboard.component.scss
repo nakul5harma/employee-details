@@ -1,0 +1,22 @@
+.dashboard-container {
+    margin: 2% 10%;
+    display: flex;
+    flex-direction: column;
+
+    .employee-list-card {
+        .dashboard-header-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .dashboard-header-text {
+            }
+
+            .add-employee-button {
+            }
+        }
+
+        .employee-list-container {
+        }
+    }
+}

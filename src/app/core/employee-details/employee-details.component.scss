@@ -1,0 +1,26 @@
+.employee-detail-container {
+    .employee-detail-card {
+        .employee-detail-card-title {
+        }
+
+        .employee-detail-card-content {
+            margin: 0 16px;
+            .employee-detail-form {
+                .form-field-container {
+                    display: flex;
+
+                    .form-feild-label-container {
+                        width: 100px;
+                        padding-top: 18px;
+                        .form-field-label {
+                        }
+                    }
+
+                    .form-field {
+                        width: 300px;
+                    }
+                }
+            }
+        }
+    }
+}
