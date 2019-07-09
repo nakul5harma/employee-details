@@ -92,9 +92,6 @@
                     <mat-form-field class="form-field">
                         <input matInput type="number" name="salary" id="salaryField" placeholder="Salary"
                             formControlName="salary">
-                        <mat-error *ngIf="employeeDetailForm.get('salary').hasError('pattern')">
-                            Please enter salary value in digits!
-                        </mat-error>
                     </mat-form-field>
                 </div>
             </form>

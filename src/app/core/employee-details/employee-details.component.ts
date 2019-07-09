@@ -18,29 +18,34 @@ export class EmployeeDetailsComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<EmployeeDetailsComponent>,
         private locationProviderService: LocationProviderService
-    ) {
+    ) {}
+
+    ngOnInit() {
         this.initForm(new Employee('', '', null, '', '', '', '', null));
 
-        this.locationProviderService.getPosition().then((pos) => {
-            this.locationProviderService.getCountryCode(pos.lat, pos.lng).subscribe(
-                (countryCode) => {
-                    this.locationProviderService.getCountryDialCode(countryCode).subscribe(
-                        (dialCode: string) => {
-                            this.employeeDetailForm.controls.dialCode.setValue(dialCode);
-                        },
-                        (error) => {
-                            console.log('error occured while fetching country dial code!');
-                        }
-                    );
-                },
-                (error) => {
-                    console.log('error occured while fetching country code!');
-                }
-            );
-        });
+        this.locationProviderService.getPosition().then(
+            (pos) => {
+                this.locationProviderService.getCountryCode(pos.lat, pos.lng).subscribe(
+                    (countryCode) => {
+                        this.locationProviderService.getCountryDialCode(countryCode).subscribe(
+                            (dialCode: string) => {
+                                this.employeeDetailForm.controls.dialCode.setValue(dialCode);
+                            },
+                            (error) => {
+                                console.log('error occured while fetching country dial code!');
+                            }
+                        );
+                    },
+                    (error) => {
+                        console.log('error occured while fetching country code!');
+                    }
+                );
+            },
+            (error) => {
+                console.log(' Error : ' + JSON.stringify(error));
+            }
+        );
     }
-
-    ngOnInit() {}
 
     private initForm(employee: Employee) {
         this.employeeDetailForm = new FormGroup({
@@ -56,9 +61,7 @@ export class EmployeeDetailsComponent implements OnInit {
                 Validators.pattern(/^\d{10}$/g),
                 Validators.maxLength(10)
             ]),
-            dialCode: new FormControl(employee.dialCode, [
-                Validators.required
-            ]),
+            dialCode: new FormControl(employee.dialCode),
             company: new FormControl(employee.company),
             jobRole: new FormControl(employee.jobRole, [
                 Validators.maxLength(50)
@@ -66,9 +69,7 @@ export class EmployeeDetailsComponent implements OnInit {
             address: new FormControl(employee.address, [
                 Validators.maxLength(200)
             ]),
-            salary: new FormControl(employee.salary, [
-                Validators.pattern(/^\d{5,}$/g)
-            ])
+            salary: new FormControl(employee.salary)
         });
     }
 

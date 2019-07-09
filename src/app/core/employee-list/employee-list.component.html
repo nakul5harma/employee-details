@@ -16,7 +16,7 @@
             <mat-card>
                 <h4 mat-line> Name - {{employee.name}} </h4>
                 <p mat-line> Email - {{employee.email}} </p>
-                <p mat-line> Phone - {{employee.phone}} </p>
+                <p mat-line> Phone - {{employee.dialCode}}{{employee.phone}} </p>
                 <p mat-line *ngIf="employee.jobRole"> Job Role - {{employee.jobRole}} </p>
                 <p mat-line *ngIf="employee.company"> Company - {{employee.company}} </p>
                 <p mat-line *ngIf="employee.address"> Address - {{employee.address}} </p>
